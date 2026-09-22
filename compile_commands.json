@@ -1,0 +1,23 @@
+[
+  {
+    "file": "Src/main.c",
+    "arguments": [
+      "/usr/bin/avr-gcc",
+      "-mmcu=atmega328p",
+      "-DF_CPU=16000000UL",
+      "-Os",
+      "-Wall",
+      "-std=c11",
+      "-ISrc",
+      "-IDriver",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-c",
+      "Src/main.c",
+      "-o",
+      "Build/main.o"
+    ],
+    "directory": "/home/Thanh/IoT/LedYSinh",
+    "output": "Build/main.o"
+  }
+]
