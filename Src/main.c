@@ -22,7 +22,6 @@ Device *LED,*WAVE;
 int main(void){
     LED->Status = OFF;
     WAVE->Status = OFF;
-
     while(1){
         PORTB = 0xFF;
         _delay_ms(1000);
