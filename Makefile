@@ -19,22 +19,23 @@ OBJS       = $(patsubst %.c,$(BUILD_DIR)/%.o,$(notdir $(SRCS)))
 VPATH      = $(SRC_DIR):$(DRV_DIR)
 
 # ================== Compiler Flags ==================
-CFLAGS     = -mmcu=$(MCU) -DF_CPU=$(F_CPU) -Os -Wall -std=c11
+CFLAGS     = -mmcu=$(MCU) -DF_CPU=$(F_CPU) -Os -Wall
 CFLAGS    += -I$(SRC_DIR) -I$(DRV_DIR)
 CFLAGS    += -ffunction-sections -fdata-sections
 LDFLAGS    = -mmcu=$(MCU) -Wl,--gc-sections
 
 # ================== COMMAND ==================
-all: 
-$(TARGET).hex size
+all: $(TARGET).hex size
 
 # Link file .elf tu cac .o
 $(TARGET).elf: $(OBJS)
 	$(CC) $(LDFLAGS) -o $@ $^
+	@echo "----- Linking object file completed -----"
 
 # Bien dich tung file .c thanh .o, dat trong Build 
 $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
+	@echo "----- Build Object file Done -----"
 
 # Tao thu muc Build neu chua co
 $(BUILD_DIR):

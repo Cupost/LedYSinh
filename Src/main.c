@@ -1,27 +1,15 @@
 #include <avr/io.h>
 #include <util/delay.h>
+#include "Led.h"
+#include "Wave.h"
 
-typedef struct
-{
-    enum Status {
-        ON,
-        OFF
-    }Status;
-    enum Power_Lever {
-        LOW,
-        MEDIUM,
-        HIGH,
-    }Power_Lever;
-}Device;
-
-Device *LED,*WAVE;
 
 
 
 
 int main(void){
-    LED->Status = OFF;
-    WAVE->Status = OFF;
+    Led->Status = OFF;
+    Wave->Power_Level = LOW;
     while(1){
         PORTB = 0xFF;
         _delay_ms(1000);
