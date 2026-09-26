@@ -3,12 +3,13 @@
 #include "Wave.h"
 #include <avr/io.h>
 #include <util/delay.h>
+#include <avr/interrupt.h>
 
 void TimerPWM_Init();
-void ProgramInit(void);
+void StatusInit(void);
 
 int main(void) {
-  ProgramInit();
+  StatusInit();
   TimerPWM_Init();
 
   while (1) {
@@ -19,7 +20,7 @@ int main(void) {
   }
 }
 
-void ProgramInit() {
+void StatusInit() {
   // Setup Status for device
   Led->Status = OFF;
   OCR0A = 0x00;
@@ -34,3 +35,10 @@ void TimerPWM_Init() {
   TCCR0A = 0xA3;
   TCCR0B = 0x02;
 };
+
+ISR(INT0_vect){
+  Led_ChangePower();
+}
+ISR(INT1_vect) {
+  Wave_ChangePower();
+}
