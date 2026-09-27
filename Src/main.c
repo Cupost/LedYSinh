@@ -31,7 +31,7 @@ void ProgramInit() {
   */
   EICRA = 0x0A; 
   EIMSK = 0x03;
-  DDRD  = 0b01101100;
+  DDRD  = 0b00001100;
   sei();
 };
 
