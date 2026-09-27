@@ -49,15 +49,6 @@ $(TARGET).hex: $(TARGET).elf
 size: $(TARGET).elf
 	$(SIZE) --format=avr --mcu=$(MCU) $<
 
-# ================== Nap chuong trinh qua avrdude ==================
-# Chinh lai PROGRAMMER / PORT / BAUD cho dung mach nap ban dang dung
-PROGRAMMER = arduino
-PORT       = /dev/ttyUSB0
-BAUD       = 115200
-
-flash: $(TARGET).hex
-	avrdude -c $(PROGRAMMER) -p m328p -P $(PORT) -b $(BAUD) -U flash:w:$<:i
-
 # ================== Don dep ==================
 clean:
 	rm -rf $(BUILD_DIR)/*
