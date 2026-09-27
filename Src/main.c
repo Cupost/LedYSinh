@@ -6,10 +6,10 @@
 #include <avr/interrupt.h>
 
 void TimerPWM_Init();
-void StatusInit(void);
+void ProgramInit(void);
 
 int main(void) {
-  StatusInit();
+  ProgramInit();
   TimerPWM_Init();
 
   while (1) {
@@ -20,13 +20,21 @@ int main(void) {
   }
 }
 
-void StatusInit() {
+void ProgramInit() {
   // Setup Status for device
   Led->Status = OFF;
   OCR0A = 0x00;
   Wave->Status = OFF;
   OCR0B = 0x00;
+  /* Set INT0&1 interrupt 
+  * sei to set bit I in SREG 
+  */
+  EICRA = 0x0A; 
+  EIMSK = 0x03;
+  DDRD  = 0b01101100;
+  sei();
 };
+
 void TimerPWM_Init() {
   /* WGM02:WGM00 = 0 1 1 => Fast PWM mode
    * CS02:CS01 = 0 1 0 => Timer Prescale = 8
@@ -35,6 +43,7 @@ void TimerPWM_Init() {
   TCCR0A = 0xA3;
   TCCR0B = 0x02;
 };
+
 
 ISR(INT0_vect){
   Led_ChangePower();

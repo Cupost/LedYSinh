@@ -1,13 +1,52 @@
 [
   {
+    "file": "Src/Led.c",
+    "arguments": [
+      "/usr/bin/avr-gcc",
+      "-mmcu=atmega328p",
+      "-DF_CPU=8000000UL",
+      "-Os",
+      "-Wall",
+      "-ISrc",
+      "-IDriver",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-c",
+      "Src/Led.c",
+      "-o",
+      "Build/Led.o"
+    ],
+    "directory": "/home/Thanh/IoT/LedYSinh",
+    "output": "Build/Led.o"
+  },
+  {
+    "file": "Src/Wave.c",
+    "arguments": [
+      "/usr/bin/avr-gcc",
+      "-mmcu=atmega328p",
+      "-DF_CPU=8000000UL",
+      "-Os",
+      "-Wall",
+      "-ISrc",
+      "-IDriver",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-c",
+      "Src/Wave.c",
+      "-o",
+      "Build/Wave.o"
+    ],
+    "directory": "/home/Thanh/IoT/LedYSinh",
+    "output": "Build/Wave.o"
+  },
+  {
     "file": "Src/main.c",
     "arguments": [
       "/usr/bin/avr-gcc",
       "-mmcu=atmega328p",
-      "-DF_CPU=16000000UL",
+      "-DF_CPU=8000000UL",
       "-Os",
       "-Wall",
-      "-std=c11",
       "-ISrc",
       "-IDriver",
       "-ffunction-sections",
